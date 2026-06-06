@@ -1,0 +1,77 @@
+
+
+# --- Import models ---
+
+from dojo_ninjas_app.models import Dojo, Ninja
+# ============================================================
+
+Dojo.objects.create(name="Coding Dojo Seattle", city="Seattle", state="WA")
+
+Dojo.objects.create(name="Coding Dojo Dallas", city="Dallas", state="TX")
+
+Dojo.objects.create(name="Coding Dojo Chicago", city="Chicago", state="IL")
+# ============================================================
+Dojo.objects.all().delete()
+# ============================================================
+Dojo.objects.create(name="Coding Dojo Seattle", city="Seattle", state="WA")
+
+Dojo.objects.create(name="Coding Dojo Dallas", city="Dallas", state="TX")
+
+Dojo.objects.create(name="Coding Dojo Chicago", city="Chicago", state="IL")
+# ============================================================
+
+first_dojo = Dojo.objects.first()
+
+Ninja.objects.create(first_name="Ola",  last_name="Ali",       dojo=first_dojo)
+
+Ninja.objects.create(first_name="Ameera",  last_name="Mohisen",    dojo=first_dojo)
+
+Ninja.objects.create(first_name="Ahmed",  last_name="jehad", dojo=first_dojo)
+
+# ============================================================
+
+second_dojo = Dojo.objects.all()[1]
+
+Ninja.objects.create(first_name="Carlos", last_name="Rivera",   dojo=second_dojo)
+
+Ninja.objects.create(first_name="Mia",    last_name="Thompson", dojo=second_dojo)
+
+Ninja.objects.create(first_name="James",  last_name="Park",     dojo=second_dojo)
+
+# ============================================================
+
+third_dojo = Dojo.objects.last()
+
+Ninja.objects.create(first_name="Amir",   last_name="Cohen",  dojo=third_dojo)
+
+Ninja.objects.create(first_name="Yuki",   last_name="Tanaka", dojo=third_dojo)
+
+Ninja.objects.create(first_name="Fatima", last_name="Malik",  dojo=third_dojo)
+
+# ============================================================
+
+first_dojo = Dojo.objects.first()
+
+first_dojo.ninjas.all()
+# ============================================================
+
+last_dojo = Dojo.objects.last()
+
+last_dojo.ninjas.all()
+# ============================================================
+
+last_ninja = Ninja.objects.last()
+
+last_ninja.dojo
+
+ 
+
+
+# Run in terminal:
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
+# ============================================================
+from dojo_ninjas_app.models import Dojo, Ninja
+Dojo.objects.create(name="Coding Dojo NYC", city="New York", state="NY", desc="brand new dojo")
